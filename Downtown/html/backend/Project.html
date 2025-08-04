@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Downtown Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/backend-plugin.min.css" />
+    <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.0" />
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/remixicon/fonts/remixicon.css"
+    />
+
+    <style> 
+.carditems {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  border-radius: 15px;
+  list-style: none;
+}
+
+.carditems:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  border-radius: 15px;
+}
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  /*background: rgba(49, 49, 49, 0.4);*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#76d7c4),
+    to(#bb8fce)
+  );
+  background: -o-linear-gradient(#76d7c4, #bb8fce);
+  background: linear-gradient(#76d7c4, #bb8fce);*/
+  z-index: -1;
+}
+
+body small {
+  position: absolute;
+  bottom: 20px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body small a {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#container {
+  width: 500px;
+  height: 50px;
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+#container .text {
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#container #menu-wrap {
+  position: relative;
+  height: 25px;
+  width: 25px;
+}
+
+#container #menu-wrap .dots {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#container #menu-wrap .dots > div,
+#container #menu-wrap .dots > div:after,
+#container #menu-wrap .dots > div:before {
+  height: 6px;
+  width: 6px;
+  background-color: rgba(49, 49, 49, 0.8);
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#container #menu-wrap .dots > div {
+  position: relative;
+}
+
+#container #menu-wrap .dots > div:after {
+  content: "";
+  position: absolute;
+  bottom: calc((25px / 2) - (6px / 2));
+  left: 0;
+}
+
+#container #menu-wrap .dots > div:before {
+  content: "";
+  position: absolute;
+  top: calc((25px / 2) - (6px / 2));
+  left: 0;
+}
+
+#container #menu-wrap .menu {
+  position: absolute;
+  right: -10px;
+  top: calc(-12px + 50px);
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px 15px;
+  -webkit-box-shadow: 2px 4px 6px rgba(49, 49, 49, 0.2);
+  box-shadow: 2px 4px 6px rgba(49, 49, 49, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#container #menu-wrap .menu ul {
+  list-style: none;
+}
+
+#container #menu-wrap .menu ul li {
+  margin: 15px 0;
+}
+
+#container #menu-wrap .menu ul li .link {
+  text-decoration: none;
+  color: rgba(49, 49, 49, 0.85);
+  opacity: 0;
+  visibility: hidden;
+}
+
+#container #menu-wrap .toggler {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#container #menu-wrap .toggler:hover + .dots > div,
+#container #menu-wrap .toggler:hover + .dots > div:after,
+#container #menu-wrap .toggler:hover + .dots > div:before {
+  background-color: rgba(49, 49, 49, 0.6);
+}
+
+#container #menu-wrap .toggler:checked + .dots > div {
+  -webkit-transform: translateX(calc(((25px / 2) - (6px / 2)) * -0.7071067812))
+    translateY(calc(((25px / 2) - (6px / 2)) * -0.7071067812));
+  -ms-transform: translateX(calc(((25px / 2) - (6px / 2)) * -0.7071067812))
+    translateY(calc(((25px / 2) - (6px / 2)) * -0.7071067812));
+  transform: translateX(calc(((25px / 2) - (6px / 2)) * -0.7071067812))
+    translateY(calc(((25px / 2) - (6px / 2)) * -0.7071067812));
+}
+
+#container #menu-wrap .toggler:checked + .dots > div:after {
+  -webkit-transform: translateX(calc(((25px / 2) - (6px / 2)) * 0.7071067812))
+    translateY(calc((2 * (25px / 2) - (6px / 2)) * 0.7071067812));
+  -ms-transform: translateX(calc(((25px / 2) - (6px / 2)) * 0.7071067812))
+    translateY(calc((2 * (25px / 2) - (6px / 2)) * 0.7071067812));
+  transform: translateX(calc(((25px / 2) - (6px / 2)) * 0.7071067812))
+    translateY(calc((2 * (25px / 2) - (6px / 2)) * 0.7071067812));
+}
+
+#container #menu-wrap .toggler:checked + .dots > div:before {
+  -webkit-transform: translateX(
+      calc(2 * (((25px / 2) - (6px / 2)) * 0.7071067812))
+    )
+    translateY(
+      calc(((25px / 2) - (6px / 2)) - (((25px / 2) - (6px / 2)) * 0.7071067812))
+    );
+  -ms-transform: translateX(calc(2 * (((25px / 2) - (6px / 2)) * 0.7071067812)))
+    translateY(
+      calc(((25px / 2) - (6px / 2)) - (((25px / 2) - (6px / 2)) * 0.7071067812))
+    );
+  transform: translateX(calc(2 * (((25px / 2) - (6px / 2)) * 0.7071067812)))
+    translateY(
+      calc(((25px / 2) - (6px / 2)) - (((25px / 2) - (6px / 2)) * 0.7071067812))
+    );
+}
+
+#container #menu-wrap .toggler:checked:hover + .dots > div,
+#container #menu-wrap .toggler:checked:hover + .dots > div:after,
+#container #menu-wrap .toggler:checked:hover + .dots > div:before {
+  background-color: rgba(49, 49, 49, 0.6);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#container #menu-wrap .toggler:checked ~ .menu {
+  opacity: 1;
+  visibility: visible;
+  width: 150px;
+  height: 130px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#container #menu-wrap .toggler:checked ~ .menu ul .link {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: 0.5s ease 0.3s;
+  -o-transition: 0.5s ease 0.3s;
+  transition: 0.5s ease 0.3s;
+}
+
+#container #menu-wrap .toggler:checked ~ .menu ul .link:hover {
+  color: #2980b9;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+#container #menu-wrap .toggler:not(:checked) ~ .menu {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#container #menu-wrap .toggler:not(:checked) ~ .menu ul .link {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+@media (max-width: 600px) {
+  #container {
+    position: absolute;
+    top: 50px;
+    width: calc(100% - 40px);
+    margin: 0;
+  }
+}
+</style>
+  </head>
+  <body class="  ">
+    <!-- loader Start -->
+    <div id="loading">
+      <div id="loading-center"></div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      <div class="iq-sidebar sidebar-default">
+        <div
+          class="iq-sidebar-logo d-flex align-items-center justify-content-between"
+        >
+          <a id="dashboardmenu" class="header-logo">
+            <img
+              src="../assets/images/logo.png"
+              class="img-fluid rounded-normal light-logo"
+              alt="logo"
+            />
+            <h5 class="logo-title light-logo ml-3">Downtown</h5>
+          </a>
+          <div class="iq-menu-bt-sidebar ml-0">
+            <i class="las la-bars wrapper-menu"></i>
+          </div>
+        </div>
+        <div class="data-scrollbar" data-scroll="1">
+          <nav class="iq-sidebar-menu">
+            <ul id="iq-sidebar-toggle" class="iq-menu">
+              <li class="active">
+                <a id="dashboardmenu" class="svg-icon">
+                  <svg
+                    class="svg-icon"
+                    id="p-dash1"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                    ></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                  <span class="ml-4 ">Dashboards</span>
+                </a>
+                <ul
+                  id="todo"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a href="./backend/todo.html">
+                      <i class="las la-minus"></i><span>Todo List</span>
+                    </a>
+                  </li>
+                  <!--<li class="">
+                    <a href="./backend/chat.html">
+                      <i class="las la-minus"></i><span>Chat</span>
+                    </a>
+                  </li>-->
+                </ul>
+              </li>
+              <li class=" ">
+                <a
+                  href="#Projects"
+                  class="collapsed"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                >
+                  <svg
+                    class="svg-icon"
+                    id="p-dash3"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="9"
+                      y="9"
+                      width="13"
+                      height="13"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    ></path>
+                  </svg>
+                  <span class="ml-4">File</span>
+                  <svg
+                    class="svg-icon iq-arrow-right arrow-active"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="10 15 15 20 20 15"></polyline>
+                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                  </svg>
+                </a>
+                <ul
+                  id="Projects"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a id="list_files">
+                      <i class="las la-minus"></i><span>List Files</span>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a id="opennewfile">
+                      <i class="las la-minus"></i><span>Add File</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!--<li class=" ">
+                <a
+                  href="#Department"
+                  class="collapsed"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                >
+                  <svg
+                    class="svg-icon"
+                    id="p-dash3"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="9"
+                      y="9"
+                      width="13"
+                      height="13"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    ></path>
+                  </svg>
+                  <span class="ml-4">Departments</span>
+                  <svg
+                    class="svg-icon iq-arrow-right arrow-active"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="10 15 15 20 20 15"></polyline>
+                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                  </svg>
+                </a>
+                <ul
+                  id="Department"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a href="../backend/list-Department.html">
+                      <i class="las la-minus"></i><span>List Department</span>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../backend/add-Department.html">
+                      <i class="las la-minus"></i><span>Add Department</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>-->
+            
+    
+              <!--<li class=" ">
+                <a
+                  href="#people"
+                  class="collapsed"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                >
+                  <svg
+                    class="svg-icon"
+                    id="p-dash8"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span class="ml-4">Employ</span>
+                  <svg
+                    class="svg-icon iq-arrow-right arrow-active"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="10 15 15 20 20 15"></polyline>
+                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                  </svg>
+                </a>
+                <ul
+                  id="people"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a href="../backend/add-employ.html">
+                      <i class="las la-minus"></i><span>Add employs</span>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../backend/list-employ.html">
+                      <i class="las la-minus"></i><span>List Employ</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </li>-->
+              <li class=" ">
+                <a
+                href="#auth"
+                class="collapsed"
+                data-toggle="collapse"
+                aria-expanded="false"
+              >
+                  <svg
+                    class="svg-icon"
+                    id="p-dash12"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    ></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  <span class="ml-4">Authentication</span>
+                  <svg
+                    class="svg-icon iq-arrow-right arrow-active"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="10 15 15 20 20 15"></polyline>
+                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                  </svg>
+                </a>
+                <ul
+                  id="auth"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a href="../backend/auth-sign-in.html">
+                      <i class="las la-minus"></i><span>Login</span>
+                    </a>
+                  </li>
+    
+                  <li class="">
+                    <a href="../backend/auth-recoverpw.html">
+                      <i class="las la-minus"></i
+                      ><span>Recover Password</span>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../backend/auth-confirm-mail.html">
+                      <i class="las la-minus"></i><span>Confirm Mail</span>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a id="auth_lock_screen">
+                      <i class="las la-minus"></i><span>Lock Screen</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class=" ">
+                <a
+                href="#uth-page"
+                class="collapsed"
+                data-toggle="collapse"
+                aria-expanded="false"
+              >
+                  <svg
+                    class="svg-icon"
+                    id="p-dash12"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    ></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  <span class="ml-4">Other Pages</span>
+                  <svg
+                    class="svg-icon iq-arrow-right arrow-active"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="10 15 15 20 20 15"></polyline>
+                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                  </svg>
+                </a>
+                <ul
+                  id="uth-page"
+                  class="iq-submenu collapse"
+                  data-parent="#iq-sidebar-toggle"
+                >
+                  <li class="">
+                    <a href="../backend/timeline-3.html">
+                      <i class="las la-minus"></i><span>File Time line</span>
+                    </a>
+                  </li>
+    
+       
+                  <li class="">
+                    <a href="../backend/todo.html">
+                      <i class="las la-minus"></i><span>Todo</span>
+                    </a>
+                  </li>
+        
+                  <!--<li class="">
+                    <a href="../backend/chat.html">
+                      <i class="las la-minus"></i><span>Chat</span>
+                    </a>
+                  </li>-->
+                </ul>
+              </li>
+
+            </ul>
+          </nav>
+          <div class="p-3"></div>
+        </div>
+      </div>
+      <div class="iq-top-navbar">
+        <div class="iq-navbar-custom">
+          <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <div
+              class="iq-navbar-logo d-flex align-items-center justify-content-between"
+            >
+              <i class="ri-menu-line wrapper-menu"></i>
+              <a id="dashboardmenu" class="header-logo">
+                <img
+                  src="../assets/images/logo.png"
+                  class="img-fluid rounded-normal"
+                  alt="logo"
+                />
+                <h5 class="logo-title ml-3">Downtown</h5>
+              </a>
+            </div>
+            <div class="iq-search-bar device-search">
+              <form action="#" class="searchbox">
+                <a class="search-link" href="#"
+                  ><i class="ri-search-line"></i
+                ></a>
+                <input
+                  type="text"
+                  class="text search-input"
+                  placeholder="Search here..."
+                />
+              </form>
+            </div>
+            <div class="d-flex align-items-center">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-label="Toggle navigation"
+              >
+                <i class="ri-menu-3-line"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                      <!-- class="btn border add-btn shadow-none mx-2 d-none d-md-block"-->
+                 
+                  <li>
+                    <a
+                      href="#"
+                      class="btn border add-btn shadow-none mx-2 d-none d-md-block"
+                      data-toggle="modal"
+                      data-target="#new-order"
+                      ><i class="las la-plus mr-2"></i>New File</a
+                    >
+                  </li>
+                  <li class="nav-item nav-icon search-content">
+                    <a
+                      href="#"
+                      class="search-toggle rounded"
+                      id="dropdownSearch"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="ri-search-line"></i>
+                    </a>
+                    <div
+                      class="iq-search-bar iq-sub-dropdown dropdown-menu"
+                      aria-labelledby="dropdownSearch"
+                    >
+                      <form action="#" class="searchbox p-2">
+                        <div class="form-group mb-0 position-relative">
+                          <input
+                            type="text"
+                            class="text search-input font-size-12"
+                            placeholder="type here to search..."
+                          />
+                          <a href="#" class="search-link"
+                            ><i class="las la-search"></i
+                          ></a>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+                  <li class="nav-item nav-icon dropdown">
+                    <a
+                      href="#"
+                      class="search-toggle dropdown-toggle"
+                      id="dropdownMenuButton2"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-mail"
+                      >
+                        <path
+                          d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        ></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                      <span class="bg-primary"></span>
+                    </a>
+                    <div
+                      class="iq-sub-dropdown dropdown-menu"
+                      aria-labelledby="dropdownMenuButton2"
+                    >
+                      <div class="card shadow-none m-0">
+                        <div class="card-body p-0">
+                          <div class="cust-title p-3">
+                            <div
+                              class="d-flex align-items-center justify-content-between"
+                            >
+                              <h5 class="mb-0">All Messages</h5>
+                              <a class="badge badge-primary badge-card" href="#"
+                                >3</a
+                              >
+                            </div>
+                          </div>
+                          <div class="px-3 pt-0 pb-0 sub-card">
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3 border-bottom"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/01.jpg"
+                                    alt="01"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Emma Watson</h6>
+                                    <small class="text-dark"
+                                      ><b>12 : 47 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3 border-bottom"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/02.jpg"
+                                    alt="02"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Ashlynn Franci</h6>
+                                    <small class="text-dark"
+                                      ><b>11 : 30 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/03.jpg"
+                                    alt="03"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Kianna Carder</h6>
+                                    <small class="text-dark"
+                                      ><b>11 : 21 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <a
+                            class="right-ic btn btn-primary btn-block position-relative p-2"
+                            href="#"
+                            role="button"
+                          >
+                            View All
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item nav-icon dropdown">
+                    <a
+                      href="#"
+                      class="search-toggle dropdown-toggle"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-bell"
+                      >
+                        <path
+                          d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                        ></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                      </svg>
+                      <span class="bg-primary"></span>
+                    </a>
+                    <div
+                      class="iq-sub-dropdown dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <div class="card shadow-none m-0">
+                        <div class="card-body p-0">
+                          <div class="cust-title p-3">
+                            <div
+                              class="d-flex align-items-center justify-content-between"
+                            >
+                              <h5 class="mb-0">Notifications</h5>
+                              <a class="badge badge-primary badge-card" href="#"
+                                >3</a
+                              >
+                            </div>
+                          </div>
+                          <div class="px-3 pt-0 pb-0 sub-card">
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3 border-bottom"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/01.jpg"
+                                    alt="01"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Emma Watson</h6>
+                                    <small class="text-dark"
+                                      ><b>12 : 47 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3 border-bottom"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/02.jpg"
+                                    alt="02"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Ashlynn Franci</h6>
+                                    <small class="text-dark"
+                                      ><b>11 : 30 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                            <a href="#" class="iq-sub-card">
+                              <div
+                                class="media align-items-center cust-card py-3"
+                              >
+                                <div class="">
+                                  <img
+                                    class="avatar-50 rounded-small"
+                                    src="../assets/images/user/03.jpg"
+                                    alt="03"
+                                  />
+                                </div>
+                                <div class="media-body ml-3">
+                                  <div
+                                    class="d-flex align-items-center justify-content-between"
+                                  >
+                                    <h6 class="mb-0">Kianna Carder</h6>
+                                    <small class="text-dark"
+                                      ><b>11 : 21 pm</b></small
+                                    >
+                                  </div>
+                                  <small class="mb-0"
+                                    >Lorem ipsum dolor sit amet</small
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <a
+                            class="right-ic btn btn-primary btn-block position-relative p-2"
+                            href="#"
+                            role="button"
+                          >
+                            View All
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item nav-icon dropdown caption-content">
+                    <a
+                      href="#"
+                      class="search-toggle dropdown-toggle"
+                      id="dropdownMenuButton4"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src="../assets/images/user/1.png"
+                        class="img-fluid rounded"
+                        alt="user"
+                      />
+                    </a>
+                    <div
+                      class="iq-sub-dropdown dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <div class="card shadow-none m-0">
+                        <div class="card-body p-0 text-center">
+                          <div class="media-body profile-detail text-center">
+                            <img
+                              src="../assets/images/page-img/profile-bg.jpg"
+                              alt="profile-bg"
+                              class="rounded-top img-fluid mb-4"
+                            />
+                            <img
+                              src="../assets/images/user/1.png"
+                              alt="profile-img"
+                              class="rounded profile-img img-fluid avatar-70"
+                            />
+                          </div>
+                          <div class="p-3">
+                            <h5 class="mb-1">JoanDuo@property.com</h5>
+                            <p class="mb-0">Since 10 march, 2020</p>
+                            <div
+                              class="d-flex align-items-center justify-content-center mt-3"
+                            >
+                              <a
+                                href="../backend/auth-lock-screen.html"
+                                class="btn border mr-2"
+                                >Lock screen</a
+                              >
+                              <a href="auth-sign-in.html" class="btn border"
+                                >Sign Out</a
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="new-order"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="popup text-left">
+                <h4 class="mb-3">Add Document</h4>
+                <div class="content create-workform bg-body">
+                  <div class="pb-3">
+                    <label class="mb-2">Document name</label>
+                    <input type="file" id="fileInput" class="form-control" placeholder="Enter File Name or number"
+                    />
+                  </div>
+                  <div class="col-lg-12 mt-4">
+                    <div
+                      class="d-flex flex-wrap align-items-ceter justify-content-center"
+                    >
+                      <div class="btn btn-primary mr-4" data-dismiss="modal">
+                        Cancel
+                      </div>
+                      <div class="btn btn-outline-primary" id="Add_Document" data-dismiss="modal">
+                        Create
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-page">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div
+                class="card card-transparent card-block card-stretch card-height border-none"
+              >
+                <div class="card-body p-0 mt-lg-2 mt-0">
+                  <h3 class="mb-3" id="filename"></h3>
+                  
+                </div>
+<br>
+
+              </div>
+            </div>
+        
+              </div>
+<div class="row" id="files">
+
+
+</div>
+            </div>
+          </div>
+          <!-- Page end  -->
+        </div>
+      </div>
+    </div>
+    <!-- Wrapper End-->
+    <footer class="iq-footer">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                    <a href="../backend/privacy-policy.html">Privacy Policy</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="../backend/terms-of-service.html">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 text-right">
+                <span class="mr-1"
+                  >
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"; 
+
+  //https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js
+  //https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+
+  import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+//import { database } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  //import { firebase } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js';
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCwMAE5I9frXiRjGTLB7kZOS1yYaBSmf_M",
+    authDomain: "omsl-61c79.firebaseapp.com",
+    projectId: "omsl-61c79",
+    storageBucket: "omsl-61c79.firebasestorage.app",
+    messagingSenderId: "406069597322",
+    appId: "1:406069597322:web:6ab82f14010e6f3f004973",
+    measurementId: "G-4CJ3M03JE1"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  //console.log(defaultProject.name);
+  const analytics = getAnalytics(app);
+
+//import { getDatabase } from "fhttps://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+
+// Get a reference to the database and storage services
+var database = getDatabase(app);
+const storage = getStorage(app);
+
+// Reference to the root of your database
+const urlParams = new URLSearchParams(document.location.search);
+var paramValue = urlParams.get('id');
+var projectiden = urlParams.get('projectiden');
+var folder = urlParams.get('folder');
+
+var rootRef = ref(database, 'uploads/');
+
+
+const adddocument = document.getElementById("Add_Document");
+adddocument.onclick = async function(){
+
+                      
+      
+
+
+    //file upload
+    const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please select a file first.");
+    return;
+  }
+
+  // Create a storage reference
+  const storageRef = sRef(storage, `uploads/${file.name}`);
+
+    try {
+    // Upload the file
+    const snapshot = await uploadBytes(storageRef, file);
+    console.log("Uploaded a file!", snapshot);
+
+    // Get and display download URL
+    const downloadURL = await getDownloadURL(storageRef);
+
+   var filedata = {
+  doclink: downloadURL,
+  filename: file.name,
+  fileref: projectiden,
+  folder: folder,
+};
+
+push(rootRef, filedata)
+    .then(() => {
+      console.log('Data has been written successfully!');
+      location.reload()
+    })
+    .catch((error) => {
+      console.error('Error writing data: ', error);
+    });
+    console.log("File available at", downloadURL);
+    alert("File uploaded successfully!\n" + downloadURL);
+  } catch (error) {
+    console.error("Upload failed", error);
+    alert("Upload failed. See console for details.");
+  }
+
+   }
+
+//Menu links start
+
+document.write(new Date().getFullYear());
+
+                    function getval() {
+                      // body...
+                      var someval = document.getElementById("getval");
+
+                      console.log(someval.value);
+
+                      setTimeout(function(){ window.location.href = `Projects-list.html?id=${someval.value}`}, 3000);
+                    }
+                    //Dashboard
+
+                    const dashboardmenu = document.getElementById('dashboardmenu');
+
+                    dashboardmenu.onclick = function(){
+
+                       window.location.href = `index.html?id=${paramValue}`;
+      
+                                                }
+                    //Files
+                      var filelist = document.getElementById("list_files");
+
+                      filelist.onclick = function(){
+
+                       window.location.href = `Projects-list.html?id=${paramValue}`;
+      
+                                                }
+
+                      var addfile = document.getElementById("opennewfile");
+                      addfile.onclick = function(){
+
+                       window.location.href = `add-Projects.html?id=${paramValue}`;
+      
+                                                }
+
+                    //Lock Screen
+
+                      var addfile = document.getElementById("auth_lock_screen");
+                      addfile.onclick = function(){
+
+                       window.location.href = `auth-lock-screen.html?id=${paramValue}`;
+      
+                                                }
+
+
+
+                    //Employees
+                    //File activity life span
+                    //Todo
+                    //Chat
+                    
+
+                   
+
+//Menu links end
+
+
+
+
+
+// Fetch data from the 'users' node once
+onValue(rootRef, (snapshot) => {
+   console.log(snapshot.val());
+   const childDataval = snapshot.val();
+ 
+
+snapshot.forEach((childSnapshot) => {
+      const taskKey = childSnapshot.key;
+      const taskdata = childSnapshot.val();
+   console.log(`the value of one: ${taskdata.filename}`);
+
+   if (folder == taskdata.folder && projectiden == taskdata.fileref) {
+
+   document.getElementById("files").innerHTML += `<div id="container" >
+    <img src="../assets/images/pdf.png" height="50px">
+    <p>${taskdata.filename}</p>
+    <div id="menu-wrap">
+      <input type="checkbox" class="toggler" />
+      <div class="dots">
+        <div></div>
+      </div>
+      <div class="menu">
+        <div>
+          <ul>
+            <li><a id="delete" class="link">Delete</a></li>
+            <li><a href="#" class="link">Share</a></li>
+            <li><a id="printing" class="link">Print</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>`;
+    
+}
+
+var printfile = document.getElementById("printing");
+
+printfile.onclick = function(){
+
+  var pdf = taskdata.doclink;
+window.open(pdf);
+}
+
+var deletefile = document.getElementById("delete");
+
+deletefile.onclick = function(){
+
+  remove(ref(database, 'uploads/' + taskKey))
+    .then(() => {
+      location.reload()
+      console.log('Data has been deleted successfully!');
+      alert("we are in");
+      //window.location.href = 'list-employ.html';
+    })
+    .catch((error) => {
+      alert("we are not in");
+      console.error('Error writing data: ', error);
+      alert("we are not in");
+    });
+
+
+      /*dataRef.remove()
+        .then(() => {
+          console.log("Data successfully deleted!");
+          // Optionally, update your HTML to reflect the deletion
+        })
+        .catch((error) => {
+          console.error("Error removing data: ", error);
+        });*/
+    
+  }
+
+
+
+     })
+    
+  }, {
+    onlyOnce: true // This option ensures the callback is executed only once
+  });
+
+
+
+
+
+</script>
+                  ©</span
+                >
+                <a href="#" class="">Downtown</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Backend Bundle JavaScript -->
+    <script src="../assets/js/backend-bundle.min.js"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="../assets/js/table-treeview.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="../assets/js/customizer.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script async src="../assets/js/chart-custom.js"></script>
+
+    <!-- app JavaScript -->
+    <script src="../assets/js/app.js"></script>
+
+
+  </body>
+</html>
